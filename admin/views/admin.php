@@ -192,6 +192,7 @@ if(isset($_POST['save-all'])){
           </td>
           <?php
           $class = '';
+            if(!empty($product_meta['_stock'][0])){
             if($product_meta['_stock'][0] < 1){ 
               $stock_number = 0;
               $class = 'outofstock';
@@ -201,6 +202,7 @@ if(isset($_POST['save-all'])){
                  $class = 'instock';
               } 
             } 
+            }
             ?>
           <td class="td_center <?php echo $class; ?>" style="width:90px;">
             <?php if($product_meta['_stock'][0] < 1){ $stock_number = 0; }else{ $stock_number = $product_meta['_stock'][0]; } ?>
