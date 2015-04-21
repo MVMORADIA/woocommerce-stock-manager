@@ -133,15 +133,19 @@ if(isset($_POST['save-all'])){
           </td>
           <?php 
             $class = '';
+            if(!empty($product_meta['_stock'])){
             if($product_meta['_stock'][0] < 1){ 
               $stock_number = 0;
               $class = 'outofstock';
             }else{ 
               $stock_number = $product_meta['_stock'][0];
               if($product_meta['_stock'][0] < 5){ $class = 'lowstock'; }else{
-                $class = 'instock';
+                 $class = 'instock';
               } 
             } 
+            }else{
+               $class = '';
+            }
             ?>
           <td class="td_center <?php echo $class; ?>" style="width:90px;">
             <input type="number" name="stock[<?php echo $item->ID; ?>]" value="<?php echo $stock_number; ?>" class="stock_<?php echo $item->ID; ?>" style="width:90px;" />
@@ -192,7 +196,7 @@ if(isset($_POST['save-all'])){
           </td>
           <?php
           $class = '';
-            if(!empty($product_meta['_stock'][0])){
+            if(!empty($product_meta['_stock'])){
             if($product_meta['_stock'][0] < 1){ 
               $stock_number = 0;
               $class = 'outofstock';
@@ -202,6 +206,8 @@ if(isset($_POST['save-all'])){
                  $class = 'instock';
               } 
             } 
+            }else{
+               $class = '';
             }
             ?>
           <td class="td_center <?php echo $class; ?>" style="width:90px;">

@@ -97,7 +97,7 @@ class WCM_Stock {
     if(isset($_GET['product-category'])){
       if($_GET['product-category'] != 'all'){
       
-      $category = esc_url($_GET['product-category']);
+      $category = $_GET['product-category'];
       
       $args['tax_query'] = array(
 									array(
@@ -110,14 +110,14 @@ class WCM_Stock {
     }
    
    if(isset($_GET['stock-status'])){ 
-      $status = esc_url($_GET['stock-status']);
+      $status = $_GET['stock-status'];
    
       $args['meta_key']   = '_stock_status';
       $args['meta_value'] = $status;
    }
    
    if(isset($_GET['manage-stock'])){ 
-      $manage = esc_url($_GET['manage-stock']);
+      $manage = $_GET['manage-stock'];
       
       $args['meta_key']   = '_manage_stock';
       $args['meta_value'] = $manage;
@@ -128,7 +128,7 @@ class WCM_Stock {
 
 
     if(!empty($_GET['offset'])){
-      $offset = esc_url($_GET['offset'] - 1);
+      $offset = $_GET['offset'] - 1;
       $offset = $offset * $this->limit;
       $args['offset'] = $offset;
 
@@ -186,7 +186,7 @@ class WCM_Stock {
     if(isset($_GET['product-category'])){
       if($_GET['product-category'] != 'all'){
       
-      $category = esc_url($_GET['product-category']);
+      $category = $_GET['product-category'];
       
       $args['tax_query'] = array(
 									array(
@@ -199,14 +199,14 @@ class WCM_Stock {
     }
    
    if(isset($_GET['stock-status'])){ 
-      $status = esc_url($_GET['stock-status']);
+      $status = $_GET['stock-status'];
    
       $args['meta_key']   = '_stock_status';
       $args['meta_value'] = $status;
    }
    
    if(isset($_GET['manage-stock'])){ 
-      $manage = esc_url($_GET['manage-stock']);
+      $manage = $_GET['manage-stock'];
       
       $args['meta_key']   = '_manage_stock';
       $args['meta_value'] = $manage;
@@ -249,7 +249,7 @@ class WCM_Stock {
      $all = count($this->get_all_products());
      $pages = ceil($all / $this->limit);
      if(!empty($_GET['offset'])){
-       $current = esc_url($_GET['offset']);
+       $current = $_GET['offset'];
      }else{
        $current = 1;
      }
